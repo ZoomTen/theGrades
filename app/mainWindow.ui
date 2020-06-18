@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>theApp</string>
+   <string>theGrades</string>
   </property>
   <property name="windowIcon">
    <iconset theme="theApp" resource="resources.qrc">

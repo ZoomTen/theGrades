@@ -13,16 +13,19 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     grades/grades.cpp \
+    grades/widget/gradewidget.cpp \
     averages/averages.cpp
 
 HEADERS += \
     mainwindow.h \
     grades/grades.h \
+    grades/widget/gradewidget.h \
     averages/averages.h
 
 FORMS += \
     mainwindow.ui \
     grades/grades.ui \
+    grades/widget/gradewidget.ui \
     averages/averages.ui
 
 unix {
