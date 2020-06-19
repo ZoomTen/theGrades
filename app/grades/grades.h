@@ -19,8 +19,14 @@ class Grades : public QWidget{
         Ui::Grades* ui;
         GradesPrivate* d;
 
+    signals:
+        void spawnAddOrEditDialog(bool isNew, int id);
+
     private slots:
         void on_addClassButton_clicked();
+
+        void updateListing();
+        void onAddOrEditSpawned(bool isNew, int id);
 };
 
 #endif

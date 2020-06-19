@@ -14,19 +14,25 @@ SOURCES += \
     mainwindow.cpp \
     grades/grades.cpp \
     grades/widget/gradewidget.cpp \
-    averages/averages.cpp
+    averages/averages.cpp \
+    grades/edit/edit.cpp \
+    grades/edit/addcomponent.cpp
 
 HEADERS += \
     mainwindow.h \
     grades/grades.h \
     grades/widget/gradewidget.h \
-    averages/averages.h
+    averages/averages.h \
+    grades/edit/edit.h \
+    grades/edit/addcomponent.h
 
 FORMS += \
     mainwindow.ui \
     grades/grades.ui \
     grades/widget/gradewidget.ui \
-    averages/averages.ui
+    averages/averages.ui \
+    grades/edit/edit.ui \
+    grades/edit/addcomponent.ui
 
 unix {
     target.path = /usr/bin/
