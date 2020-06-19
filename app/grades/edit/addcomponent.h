@@ -14,8 +14,14 @@ class AddComponent : public QWidget{
         explicit AddComponent(QWidget* parent = nullptr);
         ~AddComponent();
 
+    signals:
+        void sendNewComponent(QString name, double weight, double grade);
+
     private:
         Ui::AddComponent* ui;
+
+    private slots:
+        void on_doneButton_clicked();
 };
 
 #endif

@@ -8,7 +8,6 @@
 struct EditOrNewPrivate{
     int id;
     QList<QTreeWidgetItem> glist;
-    AddComponent cwindow;
 };
 
 EditOrNew::EditOrNew(QWidget* parent, bool type, int id) : QWidget(parent), ui(new Ui::EditOrNew){
@@ -18,7 +17,6 @@ EditOrNew::EditOrNew(QWidget* parent, bool type, int id) : QWidget(parent), ui(n
     d = new EditOrNewPrivate();
     d->id = id;
 
-
     if(type){
         ui->classButton->setText(tr("Add Class"));
         ui->title->setText(tr("New Class"));
@@ -27,14 +25,7 @@ EditOrNew::EditOrNew(QWidget* parent, bool type, int id) : QWidget(parent), ui(n
         ui->title->setText(tr("Edit Class"));
     }
 
-    QTreeWidgetItem *data = new QTreeWidgetItem(ui->gradeList);
-    data->setText(0, "Finals");
-    data->setText(1, "80%");
-    data->setText(2, "4.0");
-    d->glist.append(*data);
-    ui->gradeList->addTopLevelItem(data);
-
-    qInfo() << d->glist.first().text(0);
+    //qInfo() << d->glist.first().text(0); // fetch data
 }
 
 EditOrNew::~EditOrNew(){
@@ -54,5 +45,17 @@ void EditOrNew::on_classButton_clicked(){
 }
 
 void EditOrNew::on_gradeButton_clicked(){
-    d->cwindow.show();
+    AddComponent* cwindow = new AddComponent();
+    connect(cwindow, &AddComponent::sendNewComponent,
+            this,    &EditOrNew::catchNewComponent);
+    cwindow->show();
+}
+
+void EditOrNew::catchNewComponent(QString name, double weight, double grade){
+    QTreeWidgetItem *data = new QTreeWidgetItem(ui->gradeList);
+    data->setText(0, name);
+    data->setText(1, QString::number(weight)+"%");
+    data->setText(2, QString::number(grade));
+    d->glist.append(*data);
+    ui->gradeList->addTopLevelItem(data);
 }
