@@ -44,7 +44,7 @@ unix {
     desktop.files = com.zumid.theGrades.desktop
 
     icon.path = /usr/share/icons/hicolor/scalable/apps/
-    icon.files = icons/theApp.svg
+    icon.files = icons/theGrades.svg
 
     INSTALLS += target desktop icon defaults
 }
