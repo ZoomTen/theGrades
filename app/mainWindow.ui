@@ -14,8 +14,8 @@
    <string>theGrades</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="theApp" resource="resources.qrc">
-    <normaloff>:/icons/theApp.svg</normaloff>:/icons/theApp.svg</iconset>
+   <iconset theme="theGrades" resource="resources.qrc">
+    <normaloff>:/icons/theGrades.svg</normaloff>:/icons/theGrades.svg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -52,8 +52,8 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset theme="theApp" resource="resources.qrc">
-           <normaloff>:/icons/theApp.svg</normaloff>:/icons/theApp.svg</iconset>
+          <iconset theme="theGrades" resource="resources.qrc">
+           <normaloff>:/icons/theGrades.svg</normaloff>:/icons/theGrades.svg</iconset>
          </property>
          <property name="popupMode">
           <enum>QToolButton::InstantPopup</enum>

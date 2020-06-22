@@ -19,13 +19,13 @@ int main(int argc, char* argv[]) {
     tApplication a(argc, argv);
 
     // application name
-#ifdef T_BLUEPRINT_BUILD
-    a.setApplicationName("theGrades-Blueprint");
-    a.setDesktopFileName("com.zumid.theGrades");
-#else
-    a.setApplicationName("theGrades");
-    a.setDesktopFileName("com.zumid.theGrades");
-#endif
+    #ifdef T_BLUEPRINT_BUILD
+        a.setApplicationName("theGrades-Blueprint");
+        a.setDesktopFileName("com.zumid.theGrades");
+    #else
+        a.setApplicationName("theGrades");
+        a.setDesktopFileName("com.zumid.theGrades");
+    #endif
 
     // version
     a.setApplicationVersion("0.01");

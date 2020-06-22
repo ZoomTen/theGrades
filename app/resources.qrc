@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>icons/theApp.svg</file>
-        <file>icons/theApp-aboutside.svg</file>
+        <file>icons/theGrades.svg</file>
+        <file>icons/theGrades-aboutside.svg</file>
     </qresource>
 </RCC>
