@@ -18,7 +18,7 @@
     <number>0</number>
    </property>
    <property name="leftMargin">
-    <number>1</number>
+    <number>0</number>
    </property>
    <property name="topMargin">
     <number>0</number>
@@ -59,7 +59,10 @@
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>Here you can set the definitions for the letter grades.</string>
+          <string>Here you can set the definitions for the letter grades. These will be automatically saved once you close this window.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -73,8 +76,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>379</width>
-            <height>256</height>
+            <width>380</width>
+            <height>222</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">

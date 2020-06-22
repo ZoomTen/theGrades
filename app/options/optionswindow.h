@@ -18,6 +18,10 @@ class Options : public QWidget{
     private:
         Ui::Options* ui;
         OptionsPrivate* d;
+
+    private slots:
+        void on_optionTabs_currentRowChanged(int row);
+        void resizeEvent(QResizeEvent *e);
 };
 
 #endif
