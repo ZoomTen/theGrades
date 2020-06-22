@@ -156,13 +156,16 @@ void EditOrNew::editComponentContextMenu(const QPoint &p){
 }
 
 void EditOrNew::on_actionEdit_triggered() {
+    int componentID = d->selectedComponent[0].toInt();
+    qDebug() << "theGrades: Edit component" << componentID << d->selectedComponent[1].toString();
     AddComponent* cwindow = new AddComponent(nullptr, false, d->selectedComponent);
     connect(cwindow, &AddComponent::sendNewComponent,
             this,    &EditOrNew::catchNewComponent);
     cwindow->show();
-    qDebug() << "theGrades: Edit component" << d->selectedComponent[0].toInt() << d->selectedComponent[1].toString();
 }
 
 void EditOrNew::on_actionRemove_triggered() {
-    qDebug() << "theGrades: Remove component" << d->selectedComponent[0].toInt() << d->selectedComponent[1].toString();
+    int componentID = d->selectedComponent[0].toInt();
+    qDebug() << "theGrades: Remove component" << componentID << d->selectedComponent[1].toString();
+    QTreeWidgetItem* removedItem = ui->gradeList->takeTopLevelItem(componentID);
 }

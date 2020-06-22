@@ -20,6 +20,7 @@ class GradeWidget : public QWidget{
 
     signals:
         void spawnAddOrEditDialog(bool isNew, int id);
+        void doRemove(int id);
 
     private:
         Ui::GradeWidget* ui;

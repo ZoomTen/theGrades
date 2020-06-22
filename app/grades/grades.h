@@ -28,6 +28,7 @@ class Grades : public QWidget{
 
         void updateListing();
         void onAddOrEditSpawned(bool isNew, int id);
+        void onRemove(int id);
 };
 
 #endif

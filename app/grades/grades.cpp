@@ -6,6 +6,7 @@
 #include "../calculator/calculator.h"
 
 #include <tpopover.h>
+#include <ttoast.h>
 #include <tsettings.h>
 
 #include <QDebug>
@@ -50,7 +51,7 @@ void Grades::onAddOrEditSpawned(bool isNew, int id){
     if (isNew){
        qDebug() << "theGrades: New ID " << id;    // display selected widget's ID
     } else {
-        qDebug() << "theGrades: Selected ID " << id;    // display selected widget's ID
+        qDebug() << "theGrades: Editing ID " << id;    // display selected widget's ID
     }
     connect(popover, &EditOrNew::done,
             p, &tPopover::dismiss);        // on close
@@ -88,6 +89,8 @@ void Grades::updateListing(){
         GradeWidget* g = new GradeWidget(nullptr, classId);
         connect(g, &GradeWidget::spawnAddOrEditDialog,
                 this, &Grades::onAddOrEditSpawned);
+        connect(g, &GradeWidget::doRemove,
+                this, &Grades::onRemove);
 
 
         g->setData(className, classCreds, calcScore);
@@ -96,4 +99,18 @@ void Grades::updateListing(){
     }
 
     emit updateAverages();
+}
+
+void Grades::onRemove(int id){
+    d->settings.remove(QString::number(id));
+
+    tToast* removedIndicator = new tToast(this);
+    removedIndicator->setTitle(tr("Removed"));
+    removedIndicator->setText(tr("Successfully removed class from list."));
+    removedIndicator->setTimeout(3000);
+    connect(removedIndicator, &tToast::dismissed, removedIndicator, &tToast::deleteLater);
+    removedIndicator->show(this);
+
+    qDebug() << "theGrades: Removed ID" << id;
+    updateListing();
 }
