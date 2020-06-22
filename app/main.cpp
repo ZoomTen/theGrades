@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
     a.setAboutDialogSplashGraphic(a.aboutDialogSplashGraphicFromSvg(":/icons/theGrades-aboutside.svg"));
 
     // generic name
-    a.setGenericName(QApplication::tr("Grade logging application"));
+    a.setGenericName(QApplication::tr("Grade logger with GPA calculation"));
 
     // license
     a.setApplicationLicense(tApplication::Gpl3OrLater);
