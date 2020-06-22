@@ -8,6 +8,7 @@
 // opening URLs
 #include <QDesktopServices>
 #include <QUrl>
+#include <QDebug>
 
 // about dialog
 #include <taboutdialog.h>
@@ -44,14 +45,7 @@ MainWindow::MainWindow(QWidget* parent):
     // icon menu
     QMenu* menu = new QMenu(this);
 
-    QMenu* fileMenu = new QMenu(this);
-    fileMenu->setTitle(tr("File"));
-    fileMenu->addAction(ui->actionNew);  // New
-    fileMenu->addAction(ui->actionOpen); // Open
-    fileMenu->addSeparator();
-    fileMenu->addAction(ui->actionSave);  // Save
-    fileMenu->addAction(ui->actionSave_As); // Save As...
-    menu->addMenu(fileMenu);                // add File submenu (non-functional)
+    menu->addAction(ui->actionOption);  // Options
 
     QMenu* helpMenu = new QMenu(this);
     helpMenu->setTitle(tr("Help"));
@@ -84,6 +78,11 @@ MainWindow::~MainWindow() {
 // exit
 void MainWindow::on_actionExit_triggered() {
     QApplication::exit();
+}
+
+// options
+void MainWindow::on_actionOption_triggered() {
+    qDebug() << "theGrades: Options window triggered";
 }
 
 // help actions

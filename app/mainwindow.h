@@ -42,6 +42,7 @@ class MainWindow : public QMainWindow {
     private slots:
         void on_actionExit_triggered();
         void on_actionAbout_triggered();
+        void on_actionOption_triggered();
         void on_actionSources_triggered();
         void on_actionFileBug_triggered();
         void resizeEvent(QResizeEvent *event);
