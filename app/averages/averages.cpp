@@ -23,9 +23,12 @@ Averages::~Averages(){
 
 void Averages::updateAverages(){
     QStringList classes = d->settings.childGroups();
+    classes.removeAll("theGrades"); // remove app config object
     if (classes.length() == 0){
-        ui->gpaLabel->setText(tr("No grades set"));
+        ui->gpaLabel->setText("");
+        ui->infoLabel->setText(tr("No grades are set. Please set some in the Grades tab. If your institution uses qualitative grades, please set it also by clicking on the icon menu -> Options."));
     } else {
+        ui->infoLabel->setText(tr("Your calculated GPA is"));
         double gpaScore;
         d->calc.clearGPA();
         for (int i=0; i < classes.length(); i++){
@@ -40,7 +43,12 @@ void Averages::updateAverages(){
                     d->calc.addWeightedScore(componentGrades[i].toDouble(),
                                              componentWeights[i].toDouble());
             }
-            d->calc.addWeightedGPA(d->calc.getFinalScore(), classCreds);
+
+            double classScore = d->calc.getFinalScore();
+            if (d->tsettings.value("theGrades/qual_enabled").toBool()){
+                classScore = d->calc.findQualitativeGrade(classScore)["value"].toDouble();
+            }
+            d->calc.addWeightedGPA(classScore, classCreds);
         }
         gpaScore = d->calc.getGPA();
         ui->gpaLabel->setText(QString::number(gpaScore));

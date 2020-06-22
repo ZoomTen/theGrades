@@ -31,10 +31,14 @@ int GradeWidget::getId(){
     return d->id;
 }
 
-void GradeWidget::setData(QString className, int credits, double calcScore){
+void GradeWidget::setData(QString className, int credits, QVariant calcScore){
     ui->classLabel->setText(className);
     ui->creditsLabel->setText(tr("%1 credit(s)").arg(QString::number(credits)));
-    ui->gradeLabel->setText(QString::number(calcScore,'g',3));
+    if(calcScore.type() == QVariant::Double){
+        ui->gradeLabel->setText(QString::number(calcScore.toFloat(),'g',3));
+    } else {
+        ui->gradeLabel->setText(calcScore.toString());
+    }
 }
 
 void GradeWidget::contextMenuEvent(QContextMenuEvent* e){
@@ -63,7 +67,6 @@ void GradeWidget::on_actionRemove_triggered() {
     removeprompt->setText(tr("Do you want to remove this class?"));
     int value = removeprompt->exec();
     if (value == tMessageBox::Yes){
-        qDebug() << "theGrades: Selected YES on remove class prompt.";
         emit doRemove(d->id);
     }
 }

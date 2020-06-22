@@ -5,8 +5,6 @@
 
 #include <tsettings.h>
 
-#include <QDebug>
-
 //struct OptionsPrivate{
     //tSettings settings;
 //};
@@ -45,12 +43,11 @@ void Options::resizeEvent(QResizeEvent *e) {
 }
 
 void Options::onSettingChanged(QString key, QVariant value){
-    qDebug() << "theGrades: setting changed" << key << value;
     ui->qualOptions->checkQualEnabled();
+    emit settingsChanged();
 }
 
 void Options::closeEvent(QCloseEvent *e){
-    qDebug() << "theGrades ";
     ui->qualOptions->saveEverything();
     e->accept();
 }

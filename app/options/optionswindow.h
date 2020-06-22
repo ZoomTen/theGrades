@@ -16,6 +16,9 @@ class Options : public QWidget{
         explicit Options(QWidget* parent = nullptr);
         ~Options();
 
+    signals:
+        void settingsChanged();
+
     private:
         Ui::Options* ui;
         //OptionsPrivate* d;

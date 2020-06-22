@@ -10,7 +10,6 @@
 // opening URLs
 #include <QDesktopServices>
 #include <QUrl>
-#include <QDebug>
 
 // about dialog
 #include <taboutdialog.h>
@@ -84,8 +83,11 @@ void MainWindow::on_actionExit_triggered() {
 
 // options
 void MainWindow::on_actionOption_triggered() {
-    qDebug() << "theGrades: Options window triggered";
     Options* optionwindow = new Options();
+    connect(optionwindow,    SIGNAL(settingsChanged()),
+            ui->averages,    SLOT(updateAverages())); // update averages on settings change
+    connect(optionwindow,    SIGNAL(settingsChanged()),
+            ui->grades,    SLOT(updateListing())); // update grades on settings change
     optionwindow->show();
 }
 

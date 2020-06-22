@@ -48,10 +48,8 @@ void Grades::onAddOrEditSpawned(bool isNew, int id){
     tPopover* p = new tPopover(popover);
     connect(popover, &EditOrNew::classAdded,
                 this,    &Grades::updateListing);        // on add class button
-    if (isNew){
-       qDebug() << "theGrades: New ID " << id;    // display selected widget's ID
-    } else {
-        qDebug() << "theGrades: Editing ID " << id;    // display selected widget's ID
+    if (!isNew){
+        qDebug() << "theGrades: Editing class ID " << id;    // selected widget's ID
     }
     connect(popover, &EditOrNew::done,
             p, &tPopover::dismiss);        // on close
@@ -69,6 +67,7 @@ void Grades::updateListing(){
         e->widget()->deleteLater();
     }
     QStringList classes = d->settings.childGroups();
+    classes.removeAll("theGrades"); // remove app config object
     for (int i=0; i < classes.length(); i++){
         QString curClass = classes[i];
         QString className = d->settings.value(curClass+"/name").toString();
@@ -84,7 +83,10 @@ void Grades::updateListing(){
                                                componentWeights[i].toDouble());
         }
 
-        double calcScore = d->calcObject.getFinalScore();
+        QVariant calcScore = QVariant(d->calcObject.getFinalScore());
+        if(d->tsettings.value("theGrades/qual_enabled").toBool()){
+            calcScore = QVariant(d->calcObject.findQualitativeGrade(calcScore.toDouble())["name"]);
+        }
 
         GradeWidget* g = new GradeWidget(nullptr, classId);
         connect(g, &GradeWidget::spawnAddOrEditDialog,

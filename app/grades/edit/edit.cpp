@@ -101,9 +101,9 @@ void EditOrNew::on_classButton_clicked(){
         d->settings.setDelimitedList(classKey+"component_weights", componentWeights);
         d->settings.setDelimitedList(classKey+"component_grades", componentGrades);
         if(d->type){
-            qDebug() << "theGrades: Added ID" << d->id;
+            qDebug() << "theGrades: Added class ID" << d->id;
         } else {
-            qDebug() << "theGrades: Edited ID" << d->id;
+            qDebug() << "theGrades: Edited class ID" << d->id;
         }
 
         emit classAdded();  // temporary

@@ -1,11 +1,14 @@
 #include "calculator.h"
 #include <QList>
+#include <tsettings.h>
 
 struct CalcPrivate{
     double score;
 
     double gpaCounter;
     double gpaSum;
+
+    tSettings settings;
 };
 
 Calc::Calc(){
@@ -42,4 +45,22 @@ double Calc::getFinalScore(){
 
 double Calc::getGPA(){
     return (d->gpaSum / d->gpaCounter);
+}
+
+QMap<QString, QVariant> Calc::findQualitativeGrade(double grade){
+    QMap<QString, QVariant> q;
+    QStringList gradeName = d->settings.delimitedList("theGrades/grades_name");
+    QStringList lowerLimits = d->settings.delimitedList("theGrades/grades_lower_limits");
+    QStringList upperLimits = d->settings.delimitedList("theGrades/grades_upper_limits");
+    QStringList worth = d->settings.delimitedList("theGrades/grades_worth");
+    for (int i=0; i<gradeName.length(); i++){
+        if(QVariant(lowerLimits[i]).toDouble() <= grade){
+            if(grade <= QVariant(upperLimits[i]).toDouble()){
+                q["name"] = gradeName[i];
+                q["value"] = worth[i];
+                return q;
+            }
+        }
+    }
+    return q;
 }

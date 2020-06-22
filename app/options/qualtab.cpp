@@ -32,14 +32,17 @@ void QualOptions::on_addGradeButton_pressed(){
 }
 
 void QualOptions::checkQualEnabled(){
+    // this is called multiple times for some reason
     d->qualEnabled = d->tsettings.value("theGrades/qual_enabled").toBool();
-    qDebug() << "theGrades: Qual. enabled:" << d->qualEnabled;
     ui->stackedWidget->setCurrentIndex((int)d->qualEnabled);
 }
 
 void QualOptions::loadEverything(){
     d->qualEnabled = d->tsettings.value("theGrades/qual_enabled").toBool();
-    if(d->qualEnabled){
+    if( d->tsettings.contains("theGrades/grades_name") &&
+        d->tsettings.contains("theGrades/grades_upper_limits") &&
+        d->tsettings.contains("theGrades/grades_lower_limits") &&
+        d->tsettings.contains("theGrades/grades_worth") ){
         QStringList gradeNames = d->tsettings.delimitedList("theGrades/grades_name");
         QStringList gradeUpperLimits = d->tsettings.delimitedList("theGrades/grades_upper_limits");
         QStringList gradeLowerLimits = d->tsettings.delimitedList("theGrades/grades_lower_limits");
@@ -61,7 +64,7 @@ void QualOptions::saveEverything(){
     if (d->qualEnabled){
         int qualCount = ui->qualGradesArea->count();
         if (qualCount > 0){
-            qDebug() << "theGrades: saving qualitative grade definitions";
+            qDebug() << "theGrades: Saving qualitative grade definitions";
             QStringList gradeNames;
             QStringList gradeUpperLimits;
             QStringList gradeLowerLimits;
@@ -74,7 +77,6 @@ void QualOptions::saveEverything(){
                 gradeLowerLimits.append(curList[1].toString());
                 gradeUpperLimits.append(curList[2].toString());
                 gradeWorth.append(curList[3].toString());
-                qDebug() << "theGrades: saving" << curList;
             }
             d->tsettings.setDelimitedList("theGrades/grades_name",gradeNames);
             d->tsettings.setDelimitedList("theGrades/grades_lower_limits",gradeLowerLimits);

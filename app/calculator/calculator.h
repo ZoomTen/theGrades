@@ -1,7 +1,8 @@
 #ifndef CALC_H
 #define CALC_H
 
-// this is a bog standard cpp object
+#include <QMap>
+#include <QVariant>
 
 struct CalcPrivate;
 class Calc{
@@ -18,6 +19,7 @@ class Calc{
         double getFinalScore();
         double getGPA();
 
+        QMap<QString, QVariant> findQualitativeGrade(double grade);
 
     private:
         CalcPrivate* d;
