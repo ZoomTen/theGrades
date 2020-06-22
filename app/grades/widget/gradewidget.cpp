@@ -34,7 +34,7 @@ int GradeWidget::getId(){
 void GradeWidget::setData(QString className, int credits, double calcScore){
     ui->classLabel->setText(className);
     ui->creditsLabel->setText(tr("%1 credit(s)").arg(QString::number(credits)));
-    ui->gradeLabel->setText(QString::number(calcScore));
+    ui->gradeLabel->setText(QString::number(calcScore,'g',3));
 }
 
 void GradeWidget::contextMenuEvent(QContextMenuEvent* e){
