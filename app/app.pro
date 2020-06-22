@@ -4,6 +4,9 @@ SHARE_APP_NAME = theGrades
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++14
+
+CONFIG += debug
+
 TARGET = thegrades
 
 # Include the-libs build tools
@@ -16,7 +19,8 @@ SOURCES += \
     grades/widget/gradewidget.cpp \
     averages/averages.cpp \
     grades/edit/edit.cpp \
-    grades/edit/addcomponent.cpp
+    grades/edit/addcomponent.cpp \
+    calculator/calculator.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -24,7 +28,8 @@ HEADERS += \
     grades/widget/gradewidget.h \
     averages/averages.h \
     grades/edit/edit.h \
-    grades/edit/addcomponent.h
+    grades/edit/addcomponent.h \
+    calculator/calculator.h
 
 FORMS += \
     mainwindow.ui \
