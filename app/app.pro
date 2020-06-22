@@ -20,7 +20,11 @@ SOURCES += \
     averages/averages.cpp \
     grades/edit/edit.cpp \
     grades/edit/addcomponent.cpp \
-    calculator/calculator.cpp
+    calculator/calculator.cpp\
+    options/calctab.cpp \
+    options/qualtab.cpp \
+    options/qualwidget.cpp \
+    options/optionswindow.cpp \
 
 HEADERS += \
     mainwindow.h \
@@ -29,7 +33,11 @@ HEADERS += \
     averages/averages.h \
     grades/edit/edit.h \
     grades/edit/addcomponent.h \
-    calculator/calculator.h
+    calculator/calculator.h\
+    options/calctab.h \
+    options/qualtab.h \
+    options/qualwidget.h \
+    options/optionswindow.h
 
 FORMS += \
     mainwindow.ui \
@@ -37,7 +45,11 @@ FORMS += \
     grades/widget/gradewidget.ui \
     averages/averages.ui \
     grades/edit/edit.ui \
-    grades/edit/addcomponent.ui
+    grades/edit/addcomponent.ui \
+    options/optionswindow.ui \
+    options/calctab.ui \
+    options/qualtab.ui \
+    options/qualwidget.ui
 
 unix {
     target.path = /usr/bin/

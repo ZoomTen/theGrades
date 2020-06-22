@@ -2,6 +2,8 @@
 #include "mainwindow.h"
 #include "ui_mainWindow.h"
 
+#include "options/optionswindow.h"
+
 // menu items
 #include <QMenu>
 
@@ -83,6 +85,8 @@ void MainWindow::on_actionExit_triggered() {
 // options
 void MainWindow::on_actionOption_triggered() {
     qDebug() << "theGrades: Options window triggered";
+    Options* optionwindow = new Options();
+    optionwindow->show();
 }
 
 // help actions
