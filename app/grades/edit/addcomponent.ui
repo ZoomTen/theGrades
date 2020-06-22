@@ -21,7 +21,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="tTitleLabel" name="label_4">
+    <widget class="tTitleLabel" name="titleLabel">
      <property name="text">
       <string>Add Component</string>
      </property>
@@ -52,6 +52,9 @@
      <property name="decimals">
       <number>2</number>
      </property>
+     <property name="maximum">
+      <double>100.000000000000000</double>
+     </property>
     </widget>
    </item>
    <item>
@@ -62,7 +65,11 @@
     </widget>
    </item>
    <item>
-    <widget class="QDoubleSpinBox" name="gradeValue"/>
+    <widget class="QDoubleSpinBox" name="gradeValue">
+     <property name="maximum">
+      <double>100.000000000000000</double>
+     </property>
+    </widget>
    </item>
    <item>
     <spacer name="verticalSpacer">

@@ -3,13 +3,20 @@
 
 #include "widget/gradewidget.h"
 #include "edit/edit.h"
+#include "../calculator/calculator.h"
 
 #include <tpopover.h>
+#include <tsettings.h>
 
 #include <QDebug>
 
+#include <QRandomGenerator>
+
 struct GradesPrivate{
     QList<GradeWidget*> grades;
+    QSettings settings;  // because tSettings childGroups() is broken for me
+    tSettings tsettings; // tSettings is a QSettings wrapper, should read the same files
+    Calc calcObject;
 };
 
 Grades::Grades(QWidget* parent) : QWidget(parent), ui(new Ui::Grades){
@@ -19,6 +26,9 @@ Grades::Grades(QWidget* parent) : QWidget(parent), ui(new Ui::Grades){
 
     connect(this, &Grades::spawnAddOrEditDialog,
             this, &Grades::onAddOrEditSpawned);
+
+    qDebug() << "theGrades: Updating grades from config file";
+    updateListing();
 }
 
 Grades::~Grades(){
@@ -27,20 +37,20 @@ Grades::~Grades(){
 }
 
 void Grades::on_addClassButton_clicked(){
-    emit spawnAddOrEditDialog(true, 999); // the ID is determined as the
-                                     // actual widget is created
+    // we set a random number as the new class ID
+    int newID = QRandomGenerator::global()->bounded(0,1000000);
+    emit spawnAddOrEditDialog(true, newID);
 }
 
 void Grades::onAddOrEditSpawned(bool isNew, int id){
     EditOrNew* popover = new EditOrNew(this, isNew, id);
     tPopover* p = new tPopover(popover);
-    if (isNew){
-        // add new class
-        connect(popover, &EditOrNew::classAdded,
+    connect(popover, &EditOrNew::classAdded,
                 this,    &Grades::updateListing);        // on add class button
+    if (isNew){
+       qDebug() << "theGrades: New ID " << id;    // display selected widget's ID
     } else {
-        // update existing class (but which?)
-        qInfo() << "Selected ID: " << id;    // display selected widget's ID
+        qDebug() << "theGrades: Selected ID " << id;    // display selected widget's ID
     }
     connect(popover, &EditOrNew::done,
             p, &tPopover::dismiss);        // on close
@@ -52,10 +62,38 @@ void Grades::onAddOrEditSpawned(bool isNew, int id){
 }
 
 void Grades::updateListing(){
-    GradeWidget* g = new GradeWidget(nullptr,
-                        qrand() % 1999); // assign random ID for now
-    connect(g, &GradeWidget::spawnAddOrEditDialog,
-            this, &Grades::onAddOrEditSpawned);
-    ui->gradesArea->addWidget(g);
-    d->grades.append(g);
+    // clear all items
+    for (int i=0; i < ui->gradesArea->count(); i++){
+        QLayoutItem* e = ui->gradesArea->itemAt(i);
+        e->widget()->deleteLater();
+    }
+    QStringList classes = d->settings.childGroups();
+    for (int i=0; i < classes.length(); i++){
+        QString curClass = classes[i];
+        QString className = d->settings.value(curClass+"/name").toString();
+        int classId = curClass.toInt();
+        int classCreds = d->settings.value(curClass+"/credits").toInt();
+
+         // calculate weighted score
+        QStringList componentGrades = d->tsettings.delimitedList(curClass+"/component_grades");
+        QStringList componentWeights = d->tsettings.delimitedList(curClass+"/component_weights");
+        d->calcObject.clearScore();
+        for (int i=0; i < componentGrades.length(); i++){
+                d->calcObject.addWeightedScore(componentGrades[i].toDouble(),
+                                               componentWeights[i].toDouble());
+        }
+
+        double calcScore = d->calcObject.getFinalScore();
+
+        GradeWidget* g = new GradeWidget(nullptr, classId);
+        connect(g, &GradeWidget::spawnAddOrEditDialog,
+                this, &Grades::onAddOrEditSpawned);
+
+
+        g->setData(className, classCreds, calcScore);
+        ui->gradesArea->addWidget(g);
+        d->grades.append(g);
+    }
+
+    emit updateAverages();
 }

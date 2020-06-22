@@ -12,7 +12,7 @@ class EditOrNew : public QWidget{
     Q_OBJECT
 
     public:
-        explicit EditOrNew(QWidget* parent = nullptr, bool type = Edit, int id = 0);
+        explicit EditOrNew(QWidget* parent = nullptr, bool Type = Edit, int id = 0);
         ~EditOrNew();
 
         enum Type{
@@ -20,9 +20,16 @@ class EditOrNew : public QWidget{
             New
         };
 
+        enum Alisases{
+            ComponentID,
+            ComponentName,
+            ComponentWeight,
+            ComponentValue
+        };
+
     signals:
         void done();
-        void classAdded(); // temporary
+        void classAdded();
 
     private:
         Ui::EditOrNew* ui;
@@ -33,7 +40,12 @@ class EditOrNew : public QWidget{
         void on_gradeButton_clicked();
         void on_classButton_clicked();
 
-        void catchNewComponent(QString name, double weight, double grade);
+        void on_actionEdit_triggered();
+        void on_actionRemove_triggered();
+
+        void catchNewComponent(bool isNew, int id, QString name, double weight, double grade);
+
+        void editComponentContextMenu(const QPoint &p);
 };
 
 #endif

@@ -41,7 +41,7 @@
       <item>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
-         <widget class="QLabel" name="timeLabel">
+         <widget class="QLabel" name="classLabel">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -63,7 +63,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="gradeLabel">
           <property name="font">
            <font>
             <pointsize>24</pointsize>
@@ -75,7 +75,7 @@
          </widget>
         </item>
         <item row="1" column="0" colspan="2">
-         <widget class="QLabel" name="snoozeLabel_2">
+         <widget class="QLabel" name="creditsLabel">
           <property name="font">
            <font>
             <pointsize>13</pointsize>
@@ -94,7 +94,8 @@
   </layout>
   <action name="actionEdit">
    <property name="icon">
-    <iconset theme="edit"/>
+    <iconset theme="edit">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Edit</string>
@@ -102,7 +103,8 @@
   </action>
   <action name="actionRemove">
    <property name="icon">
-    <iconset theme="delete"/>
+    <iconset theme="delete">
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>Remove</string>

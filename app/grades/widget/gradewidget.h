@@ -15,6 +15,9 @@ class GradeWidget : public QWidget{
         explicit GradeWidget(QWidget* parent = nullptr, int id = 0);
         ~GradeWidget();
 
+        int getId();
+        void setData(QString className, int credits, double calcScore);
+
     signals:
         void spawnAddOrEditDialog(bool isNew, int id);
 

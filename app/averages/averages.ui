@@ -41,7 +41,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="gpaLabel">
         <property name="font">
          <font>
           <pointsize>36</pointsize>

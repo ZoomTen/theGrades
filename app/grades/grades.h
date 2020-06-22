@@ -21,6 +21,7 @@ class Grades : public QWidget{
 
     signals:
         void spawnAddOrEditDialog(bool isNew, int id);
+        void updateAverages();
 
     private slots:
         void on_addClassButton_clicked();

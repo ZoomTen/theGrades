@@ -68,6 +68,9 @@ MainWindow::MainWindow(QWidget* parent):
     ui->menuButton->setMenu(menu);
 
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::SlideHorizontal);
+
+    connect(ui->grades, SIGNAL(updateAverages()),
+            ui->averages,    SLOT(updateAverages())); // shoddily link the grades and averages windows
 }
 
 MainWindow::~MainWindow() {
@@ -86,12 +89,12 @@ void MainWindow::on_actionExit_triggered() {
 // help actions
 void MainWindow::on_actionSources_triggered() {
     // open source code page
-    QDesktopServices::openUrl(QUrl("http://github.com/ZoomTen/theApp"));
+    QDesktopServices::openUrl(QUrl("http://github.com/ZoomTen/theGrades"));
 }
 
 void MainWindow::on_actionFileBug_triggered() {
     // open issue tracker
-    QDesktopServices::openUrl(QUrl("http://github.com/ZoomTen/theApp/issues"));
+    QDesktopServices::openUrl(QUrl("http://github.com/ZoomTen/theGrades/issues"));
 }
 
 void MainWindow::on_actionAbout_triggered() {

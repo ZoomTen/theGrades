@@ -26,6 +26,16 @@ GradeWidget::~GradeWidget(){
     delete ui;
 }
 
+int GradeWidget::getId(){
+    return d->id;
+}
+
+void GradeWidget::setData(QString className, int credits, double calcScore){
+    ui->classLabel->setText(className);
+    ui->creditsLabel->setText(tr("%1 credits").arg(QString::number(credits)));
+    ui->gradeLabel->setText(QString::number(calcScore));
+}
+
 void GradeWidget::contextMenuEvent(QContextMenuEvent* e){
     QMenu* menu = new QMenu();
 
