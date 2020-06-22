@@ -15,9 +15,17 @@ class QualOptions : public QWidget{
         explicit QualOptions(QWidget* parent = nullptr);
         ~QualOptions();
 
+        void checkQualEnabled();
+        void saveEverything();
+        void loadEverything();
+
     private:
         Ui::QualOptions* ui;
         QualOptionsPrivate* d;
+
+    private slots:
+        void on_addGradeButton_pressed();
+
 };
 
 #endif

@@ -2,12 +2,13 @@
 #define OPTIONSWINDOW_H
 
 #include <QWidget>
-
+#include <QCloseEvent>
+#include <tsettings.h>
 namespace Ui{
     class Options;
 }
 
-struct OptionsPrivate;
+//struct OptionsPrivate;
 class Options : public QWidget{
     Q_OBJECT
 
@@ -17,11 +18,16 @@ class Options : public QWidget{
 
     private:
         Ui::Options* ui;
-        OptionsPrivate* d;
+        //OptionsPrivate* d;
+        tSettings* settings;
 
     private slots:
         void on_optionTabs_currentRowChanged(int row);
+        void onSettingChanged(QString k, QVariant v);
         void resizeEvent(QResizeEvent *e);
+
+    protected:
+        void closeEvent(QCloseEvent *e);
 };
 
 #endif

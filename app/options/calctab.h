@@ -18,6 +18,9 @@ class CalcOptions : public QWidget{
     private:
         Ui::CalcOptions* ui;
         CalcOptionsPrivate* d;
+
+    private slots:
+        void on_qualCheckbox_toggled(bool checked);
 };
 
 #endif

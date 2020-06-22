@@ -3,19 +3,29 @@
 
 #include <tstackedwidget.h>
 
-struct OptionsPrivate{
-};
+#include <tsettings.h>
+
+#include <QDebug>
+
+//struct OptionsPrivate{
+    //tSettings settings;
+//};
 
 Options::Options(QWidget* parent) : QWidget(parent), ui(new Ui::Options){
     ui->setupUi(this);
 
-    d = new OptionsPrivate();
+    //d = new OptionsPrivate();
+    settings = new tSettings();
 
     ui->stackedWidget->setCurrentAnimation(tStackedWidget::Lift);
+
+    connect(settings, &tSettings::settingChanged,
+            this, &Options::onSettingChanged);
 }
 
 Options::~Options(){
-    delete d;
+    //delete d;
+    delete settings;
     delete ui;
 }
 
@@ -32,4 +42,15 @@ void Options::resizeEvent(QResizeEvent *e) {
         // expand sidebar
         ui->optionTabs->setMaximumSize(SC_DPI(130), QWIDGETSIZE_MAX);
     }
+}
+
+void Options::onSettingChanged(QString key, QVariant value){
+    qDebug() << "theGrades: setting changed" << key << value;
+    ui->qualOptions->checkQualEnabled();
+}
+
+void Options::closeEvent(QCloseEvent *e){
+    qDebug() << "theGrades ";
+    ui->qualOptions->saveEverything();
+    e->accept();
 }

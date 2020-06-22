@@ -67,6 +67,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="addGradeButton">
+         <property name="text">
+          <string>Add Letter Grade Definition</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QScrollArea" name="scrollArea">
          <property name="widgetResizable">
           <bool>true</bool>
@@ -77,19 +84,12 @@
             <x>0</x>
             <y>0</y>
             <width>380</width>
-            <height>222</height>
+            <height>190</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
-            <layout class="QVBoxLayout" name="gradesArea"/>
-           </item>
-           <item>
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Add Letter Grade Definition</string>
-             </property>
-            </widget>
+            <layout class="QVBoxLayout" name="qualGradesArea"/>
            </item>
            <item>
             <spacer name="verticalSpacer">

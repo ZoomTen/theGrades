@@ -15,9 +15,16 @@ class QualWidget : public QWidget{
         explicit QualWidget(QWidget* parent = nullptr);
         ~QualWidget();
 
+        QList<QVariant> getEverything();
+
+        void setData(QString, double, double, double);
+
     private:
         Ui::QualWidget* ui;
         QualWidgetPrivate* d;
+
+    private slots:
+        void on_deleteButton_pressed();
 };
 
 #endif
