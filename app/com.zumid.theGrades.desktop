@@ -2,8 +2,8 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=theApp
-GenericName=Generic application
-Exec=theApp
-Icon=theApp
+Name=theGrades
+GenericName=Grade logger with GPA calculation
+Exec=thegrades
+Icon=theGrades
 Categories=Utility;
