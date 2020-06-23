@@ -72,7 +72,7 @@
          </size>
         </property>
         <property name="isWrapping" stdset="0">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
         <property name="resizeMode">
          <enum>QListView::Fixed</enum>
@@ -88,7 +88,7 @@
           <string>Calculation</string>
          </property>
          <property name="icon">
-          <iconset theme="calc">
+          <iconset>
            <normaloff>.</normaloff>.</iconset>
          </property>
         </item>
@@ -97,7 +97,7 @@
           <string>Qualitative Grades</string>
          </property>
          <property name="icon">
-          <iconset theme="star">
+          <iconset>
            <normaloff>.</normaloff>.</iconset>
          </property>
         </item>
@@ -122,6 +122,11 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>tTitleLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">ttitlelabel.h</header>
+  </customwidget>
+  <customwidget>
    <class>tStackedWidget</class>
    <extends>QStackedWidget</extends>
    <header location="global">tstackedwidget.h</header>
@@ -129,11 +134,6 @@
    <slots>
     <signal>switchingFrame(int)</signal>
    </slots>
-  </customwidget>
-  <customwidget>
-   <class>tTitleLabel</class>
-   <extends>QLabel</extends>
-   <header location="global">ttitlelabel.h</header>
   </customwidget>
   <customwidget>
    <class>CalcOptions</class>

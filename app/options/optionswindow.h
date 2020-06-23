@@ -27,7 +27,7 @@ class Options : public QWidget{
     private slots:
         void on_optionTabs_currentRowChanged(int row);
         void onSettingChanged(QString k, QVariant v);
-        void resizeEvent(QResizeEvent *e);
+//        void resizeEvent(QResizeEvent *e);
 
     protected:
         void closeEvent(QCloseEvent *e);
