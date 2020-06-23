@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="tTitleLabel" name="label">
@@ -38,6 +41,9 @@
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QWidget" name="widget" native="true">
+         <property name="autoFillBackground">
+          <bool>true</bool>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <layout class="QVBoxLayout" name="gradesArea"/>

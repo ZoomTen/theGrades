@@ -14,10 +14,16 @@
    <string>thegrades</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="thegrades">
+   <iconset theme="thegrades" resource="resources.qrc">
     <normaloff>:/icons/thegrades.svg</normaloff>:/icons/thegrades.svg</iconset>
   </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
      <number>0</number>
@@ -139,6 +145,9 @@
     </item>
     <item>
      <widget class="tStackedWidget" name="stackedWidget">
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
       <widget class="Averages" name="averages"/>
       <widget class="Grades" name="grades"/>
      </widget>

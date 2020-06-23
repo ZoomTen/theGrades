@@ -88,7 +88,8 @@
           <string>Calculation</string>
          </property>
          <property name="icon">
-          <iconset theme="calc"/>
+          <iconset theme="calc">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </item>
         <item>
@@ -96,7 +97,8 @@
           <string>Qualitative Grades</string>
          </property>
          <property name="icon">
-          <iconset theme="star"/>
+          <iconset theme="star">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </item>
        </widget>
@@ -120,11 +122,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>tTitleLabel</class>
-   <extends>QLabel</extends>
-   <header location="global">ttitlelabel.h</header>
-  </customwidget>
-  <customwidget>
    <class>tStackedWidget</class>
    <extends>QStackedWidget</extends>
    <header location="global">tstackedwidget.h</header>
@@ -132,6 +129,11 @@
    <slots>
     <signal>switchingFrame(int)</signal>
    </slots>
+  </customwidget>
+  <customwidget>
+   <class>tTitleLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">ttitlelabel.h</header>
   </customwidget>
   <customwidget>
    <class>CalcOptions</class>
