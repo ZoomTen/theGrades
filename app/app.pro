@@ -10,6 +10,13 @@ TARGET = thegrades
 # Include the-libs build tools
 include(/usr/share/the-libs/pri/buildmaster.pri)
 
+# Version defines
+APP_VERSION = 1.0
+GIT_VERSION = $$system(git rev-parse --short=8 HEAD)
+
+DEFINES += GIT_VERSION=\\\"$$GIT_VERSION\\\"
+DEFINES += APP_VERSION=\\\"$$APP_VERSION\\\"
+
 SOURCES += \
     main.cpp \
     mainwindow.cpp \

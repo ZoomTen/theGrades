@@ -20,8 +20,6 @@
  *
  * *************************************/
 
-#define APP_VERSION "1.0"
-
 // UI includes
 #include "mainwindow.h"
 
@@ -50,7 +48,7 @@ int main(int argc, char* argv[]) {
     #endif
 
     // version
-    a.setApplicationVersion("0.01");
+    a.setApplicationVersion(APP_VERSION);
 
     // app icons
     a.setApplicationIcon(QIcon::fromTheme("thegrades", QIcon(":/icons/thegrades.svg")));
@@ -67,6 +65,9 @@ int main(int argc, char* argv[]) {
     // copyright
     a.setCopyrightHolder("Zumi Daxuya");
     a.setCopyrightYear("2020");
+
+    // git hash
+    a.addCopyrightLine(QString("Git version %1").arg(GIT_VERSION));
 
     // suite name
     a.setOrganizationName("theSuite Contrib");
