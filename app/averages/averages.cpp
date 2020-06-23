@@ -26,7 +26,7 @@ void Averages::updateAverages(){
     classes.removeAll("theGrades"); // remove app config object
     if (classes.length() == 0){
         ui->gpaLabel->setText("");
-        ui->infoLabel->setText(tr("No grades are set. Please set some in the Grades tab. If your institution uses qualitative grades, please set it also by clicking on the icon menu -> Options."));
+        ui->infoLabel->setText(tr("No grades are set.\nPlease set some in the Grades tab.\n\nIf your institution uses letter grades (qualitative grades), please set it also by clicking on the icon menu -> Options."));
     } else {
         ui->infoLabel->setText(tr("Your calculated GPA is"));
         double gpaScore;
