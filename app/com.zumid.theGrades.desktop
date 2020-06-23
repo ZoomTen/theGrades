@@ -5,5 +5,5 @@ Version=1.0
 Name=theGrades
 GenericName=Grade logger with GPA calculation
 Exec=thegrades
-Icon=theGrades
+Icon=thegrades
 Categories=Utility;
