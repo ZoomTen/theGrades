@@ -14,7 +14,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Add Component</string>
   </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
