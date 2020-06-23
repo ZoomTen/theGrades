@@ -11,11 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>theGrades</string>
+   <string>thegrades</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="theGrades" resource="resources.qrc">
-    <normaloff>:/icons/theGrades.svg</normaloff>:/icons/theGrades.svg</iconset>
+   <iconset theme="thegrades">
+    <normaloff>:/icons/thegrades.svg</normaloff>:/icons/thegrades.svg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -40,6 +40,21 @@
        <bool>true</bool>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QToolButton" name="menuButton">
          <property name="sizePolicy">
@@ -52,8 +67,8 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset theme="theGrades" resource="resources.qrc">
-           <normaloff>:/icons/theGrades.svg</normaloff>:/icons/theGrades.svg</iconset>
+          <iconset theme="thegrades" resource="resources.qrc">
+           <normaloff>:/icons/thegrades.svg</normaloff>:/icons/thegrades.svg</iconset>
          </property>
          <property name="popupMode">
           <enum>QToolButton::InstantPopup</enum>
@@ -106,7 +121,11 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="leftCsdLayout"/>
+        <layout class="QHBoxLayout" name="leftCsdLayout">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+        </layout>
        </item>
        <item>
         <layout class="QHBoxLayout" name="rightCsdLayout">

@@ -53,10 +53,10 @@ int main(int argc, char* argv[]) {
     a.setApplicationVersion("0.01");
 
     // app icons
-    a.setApplicationIcon(QIcon::fromTheme("theGrades", QIcon(":/icons/theGrades.svg")));
+    a.setApplicationIcon(QIcon::fromTheme("thegrades", QIcon(":/icons/thegrades.svg")));
 
     // splash screen graphic
-    a.setAboutDialogSplashGraphic(a.aboutDialogSplashGraphicFromSvg(":/icons/theGrades-aboutside.svg"));
+    a.setAboutDialogSplashGraphic(a.aboutDialogSplashGraphicFromSvg(":/icons/aboutsplash.svg"));
 
     // generic name
     a.setGenericName(QApplication::tr("Grade logger with GPA calculation"));

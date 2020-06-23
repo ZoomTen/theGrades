@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>icons/theGrades.svg</file>
-        <file>icons/theGrades-aboutside.svg</file>
+        <file>icons/aboutsplash.svg</file>
+        <file>icons/thegrades.svg</file>
     </qresource>
 </RCC>
