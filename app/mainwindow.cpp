@@ -35,7 +35,6 @@ MainWindow::MainWindow(QWidget* parent):
 
     // CSD layout
     QWidget* csd_widget = d->csd.csdBoxForWidget(this);
-    ui->rightCsdLayout->addWidget(csd_widget);
 
     if (tCsdGlobal::windowControlsEdge() == tCsdGlobal::Left) {
        ui->leftCsdLayout->addWidget(csd_widget);

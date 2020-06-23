@@ -78,7 +78,7 @@
          <widget class="QLabel" name="creditsLabel">
           <property name="font">
            <font>
-            <pointsize>13</pointsize>
+            <pointsize>11</pointsize>
            </font>
           </property>
           <property name="text">

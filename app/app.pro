@@ -38,7 +38,7 @@ HEADERS += \
     options/optionswindow.h
 
 FORMS += \
-    mainwindow.ui \
+    mainWindow.ui \
     grades/grades.ui \
     grades/widget/gradewidget.ui \
     averages/averages.ui \
@@ -59,7 +59,7 @@ unix {
     desktop.files = com.zumid.theGrades.desktop
 
     icon.path = /usr/share/icons/hicolor/scalable/apps/
-    icon.files = icons/theGrades.svg
+    icon.files = icons/thegrades.svg
 
     INSTALLS += target desktop icon defaults
 }
